@@ -4,22 +4,22 @@
 ###Def DoOperation recognizes the operator and then do the operation that the user desire
 def DoOperation(FirstValue, SecondValue, Operator):
 	if Operator == 1:
-		Answer = int(input1)+int(input2)
+		Answer = float(input1)+float(input2)
 		return Answer
 		
 	elif Operator == 2:
-		Answer = int(input1)-int(input2)
+		Answer = float(input1)-float(input2)
 		return Answer
 
 	elif Operator == 3:
-		Answer = int(input1)*int(input2)
+		Answer = float(input1)*float(input2)
 		return Answer
 
 	elif Operator == 4:
 		if input2 == '0':
 			print('Value of input2 cannot be 0 with this Operator')
 			return
-		Answer = int(input1)/int(input2)
+		Answer = float(input1)/float(input2)
 		return Answer
 		
 ###Value to be printed
@@ -57,6 +57,7 @@ while(True):
 	else:
 		SavedValue = DoOperation(input1, input2, Operator)
 		input1 = SavedValue
+		print ('Answer: ') 
 		print SavedValue
 	###While loop for the user to continue with their previous answer(might not require)
 """	while(true):
