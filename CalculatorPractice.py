@@ -3,24 +3,26 @@
 
 ###Def DoOperation recognizes the operator and then do the operation that the user desire
 def DoOperation(FirstValue, SecondValue, Operator):
-	if Operator == 1:
+	if int(Operator) == 1:
 		Answer = float(input1)+float(input2)
 		return Answer
 		
-	elif Operator == 2:
+	elif int(Operator) == 2:
 		Answer = float(input1)-float(input2)
 		return Answer
 
-	elif Operator == 3:
+	elif int(Operator) == 3:
 		Answer = float(input1)*float(input2)
 		return Answer
 
-	elif Operator == 4:
+	elif int(Operator) == 4:
 		if input2 == '0':
 			print('Value of input2 cannot be 0 with this Operator')
 			return
 		Answer = float(input1)/float(input2)
 		return Answer
+	else:
+		print('Operator invalid')
 		
 ###Value to be printed
 x = 0
@@ -38,21 +40,33 @@ while(True):
 		Reset = 'W'
 	### Check if this is first run
 	if i == 0:
-		input1 = input('First value:')
+		input1 = str(raw_input('First value:'))
 		###Makes sure to skip this step if there is SavedValue
 		i = 1
 	###Check if user would like to quit
 	if input1 == 'F':
 		quit()	
+	###Check if user want to reset
+	if input1 == 'R':
+		Reset = 'R'
+		continue
 	###Takes Operator
-	Operator = int(input('Operator(1:+, 2:-, 3:*, 4:/):'))
+	Operator = str(raw_input('Operator(1:+, 2:-, 3:*, 4:/):'))
 	###Check if user would like to quit
 	if Operator == 'F':
 		quit()
-	input2 = input('Second value:')
+	###Check if user want to reset
+	if Operator == 'R':
+		Reset = 'R'
+		continue
+	input2 = str(raw_input('Second value:'))
 	###Final check if user would like to quit
 	if input1 == 'F' or input2 == 'F' or Operator == 'F':
 		quit()
+	###Check if user want to reset
+	if input2 == 'R':
+		Reset = 'R'
+		continue
 	###Use the Def DoOperation
 	else:
 		SavedValue = DoOperation(input1, input2, Operator)
