@@ -3,36 +3,49 @@
 
 ###Def DoOperation recognizes the operator and then do the operation that the user desire
 def DoOperation(FirstValue, SecondValue, Operator):
-	if Operator == '+':
+	if Operator == 1:
 		Answer = int(input1)+int(input2)
-		Answer = x
+		return Answer
 		
-	elif Operator == '-':
+	elif Operator == 2:
 		Answer = int(input1)-int(input2)
-		Answer = x
+		return Answer
 
-	elif Operator == '*':
+	elif Operator == 3:
 		Answer = int(input1)*int(input2)
-		Answer = x
+		return Answer
 
-	elif Operator == '/':
+	elif Operator == 4:
 		if input2 == '0':
 			print('Value of input2 cannot be 0 with this Operator')
-			quit()
+			return
 		Answer = int(input1)/int(input2)
-		Answer = x
+		return Answer
 		
 ###Value to be printed
-SavedValue = x
-print('To quit at anypoint of this program, Enter F'/n)
-###Value input1 is outside in case of a continue, if the user quit the program this will come into use again
-input1 = input('First value:')
-###Check if user would like to quit
-if input1 == 'F':
-	quit()
+x = 0
+SavedValue = 0
+i = 0
+Reset = 'W'
+print('F to quit / R to reset values')
+
 ###Under while in case the user would like to continue their usage
-while(true):
-	Operator = input('Operator(+,-,*,/)')
+while(True):
+	###Check if Reset
+	if Reset == 'R':
+		i = 0
+		SavedValue = 0
+		Reset = 'W'
+	### Check if this is first run
+	if i == 0:
+		input1 = input('First value:')
+		###Makes sure to skip this step if there is SavedValue
+		i = 1
+	###Check if user would like to quit
+	if input1 == 'F':
+		quit()	
+	###Takes Operator
+	Operator = int(input('Operator(1:+, 2:-, 3:*, 4:/):'))
 	###Check if user would like to quit
 	if Operator == 'F':
 		quit()
@@ -42,10 +55,11 @@ while(true):
 		quit()
 	###Use the Def DoOperation
 	else:
-		DoOperation(input1, input2, Operator)
-		print x
-	###While loop for the user to continue with their previous answer
-	while(true):
+		SavedValue = DoOperation(input1, input2, Operator)
+		input1 = SavedValue
+		print SavedValue
+	###While loop for the user to continue with their previous answer(might not require)
+"""	while(true):
 		Operator = input('To continue using the last value input an operator or choose a number to continue using the calculator:')
 		###Check if user wants to quit
 		if Operator == 'F':
@@ -61,4 +75,4 @@ while(true):
 		else:
 			DoOperation(x, input2, Operator)
 			print x
-
+"""
